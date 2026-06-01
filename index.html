@@ -12,14 +12,14 @@
         .p-card:hover { border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.1); }
         .act, .btn-p:hover { background: #fff !important; color: #000 !important; font-weight: bold; }
         .btn-p { background: #1a202c; border: 1px solid #2d3748; color: #fff; }
-        .p-partizan { background: rgba(255,255,255,0.25) !important; color: #fff !important; font-weight: bold; text-shadow: 1px 1px 2px #000; }
+        .p-partizan { background: rgba(255,255,255,0.2) !important; color: #fff !important; font-weight: bold; }
         .c-img { height: 450px; object-fit: cover; }
         @media (max-width: 768px) { .c-img { height: 250px; } }
         
-        /* Okviri za glavne slike igrača (Tačne dimenzije) */
+        /* Savršene dimenzije za okvire slika startne petorke */
         .player-img-container {
             width: 100%;
-            height: 250px;
+            height: 280px;
             background: linear-gradient(135deg, #111 0%, #222 100%);
             border-bottom: 4px solid #fff;
             display: flex;
@@ -35,48 +35,45 @@
             object-position: top center; 
         }
         
-        /* Mini kružne sličice u statistici */
+        /* Podešavanje za kružne mini sličice u statistici */
         .mini-img-container {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background: #2d3748;
             border: 2px solid #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             flex-shrink: 0;
+            background: #111;
         }
         .mini-photo { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: top center;
+            object-position: top center; 
         }
 
-        /* Sekcije sa tabelama - pozadinske slike sa zamućenjem */
+        /* Pozadinske slike za tabele liga spakovane u okvire */
         .league-bg {
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             position: relative;
             border-radius: 8px;
-            padding: 20px;
-            overflow: hidden;
+            padding: 25px;
             z-index: 1;
+            overflow: hidden;
         }
         .league-bg::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(13, 15, 18, 0.85); /* Tamni filter preko pozadine radi čitljivosti */
+            background: rgba(13, 15, 18, 0.88); /* Tamni sloj da tabela bude čitljiva */
             z-index: -1;
         }
-        
-        /* Lokalne pozadinske slike sa tvog GitHub-a */
-        #el { background-image: url('evroliga-bg.jpg'); }
-        #aba { background-image: url('aba-bg.jpg'); }
+        #el { background-image: url('https://partizan.basketball/media/whatsapp-image-2025-09-26-at-64123-pm.jpeg'); }
+        #aba { background-image: url('https://partizan.basketball/media/41745886111925205185327032977938194344353591n.jpg'); }
     </style>
 </head>
 <body>
@@ -207,7 +204,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Slajder slike sa proverenih online linkova (oni rade svuda)
 const slike = [
     "https://www.tvarenasport.com/storage/assets/6755/9b4ebccbd64b8bbffed88cb077d24a13_930_523.jpg",
     "https://partizan.basketball/media/whatsapp-image-2025-09-26-at-64123-pm.jpeg",
@@ -215,18 +211,18 @@ const slike = [
     "https://partizan.basketball/media/41745886111925205185327032977938194344353591n.jpg"
 ];
 
-// Igrači sa lokalnim GitHub putanjama (Slike koje ubacuješ direktno u svoj repozitorijum)
+// Svi linkovi za igrače su ubačeni direktno na isti način kao i tvoje slike iz karusela
 const igraci = [
-    { n: "Carlik Jones", p: "PG", stat: "14.2 PPG", s: true, w: "85%", broj: "2", img: "carlik.png" },
-    { n: "Iffe Lundberg", p: "SG", stat: "11.5 PPG", s: true, w: "70%", broj: "1", img: "iffe.png" },
-    { n: "Isaac Bonga", p: "SF", stat: "9.6 PPG", s: true, w: "62%", broj: "11", img: "bonga.png" },
-    { n: "Brandon Davies", p: "PF", stat: "9.2 PPG", s: true, w: "60%", broj: "0", img: "davies.png" },
-    { n: "Tyrique Jones", p: "C", stat: "12.8 PPG", s: true, w: "78%", broj: "00", img: "tyrique.png" },
-    { n: "Frank Ntilikina", p: "G", stat: "7.8 PPG", s: false, w: "50%", broj: "21", img: "frank.png" },
-    { n: "Sterling Brown", p: "G/F", stat: "8.5 PPG", s: false, w: "55%", broj: "4", img: "sterling.png" },
-    { n: "Vanja Marinković", p: "F", stat: "7.2 PPG", s: false, w: "48%", broj: "9", img: "vanja.png" },
-    { n: "Aleksej Pokuševski", p: "F/C", stat: "6.4 PPG", s: false, w: "42%", broj: "17", img: "aleksej.png" },
-    { n: "Balša Koprivica", p: "C", stat: "5.1 PPG", s: false, w: "35%", broj: "23", img: "balsa.png" }
+    { n: "Carlik Jones", p: "PG", stat: "14.2 PPG", s: true, w: "85%", broj: "2", img: "https://vtb-league.com/app/uploads/2023/10/jones.jpg" },
+    { n: "Iffe Lundberg", p: "SG", stat: "11.5 PPG", s: true, w: "70%", broj: "1", img: "https://admin.euroleaguebasketball.net/wp-content/uploads/2022/07/Lundberg.jpg" },
+    { n: "Isaac Bonga", p: "SF", stat: "9.6 PPG", s: true, w: "62%", broj: "11", img: "https://www.highcontrast.de/wp-content/uploads/2019/09/Isaac_Bonga_DBB_Heimspiel_2019_HighContrast_02.jpg" },
+    { n: "Brandon Davies", p: "PF", stat: "9.2 PPG", s: true, w: "60%", broj: "0", img: "https://admin.euroleaguebasketball.net/wp-content/uploads/2022/07/Davies.jpg" },
+    { n: "Tyrique Jones", p: "C", stat: "12.8 PPG", s: true, w: "78%", broj: "00", img: "https://images.vtb-league.com/players/811804.jpg" },
+    { n: "Frank Ntilikina", p: "G", stat: "7.8 PPG", s: false, w: "50%", broj: "21", img: "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1628373.png" },
+    { n: "Sterling Brown", p: "G/F", stat: "8.5 PPG", s: false, w: "55%", broj: "4", img: "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1628425.png" },
+    { n: "Vanja Marinković", p: "F", stat: "7.2 PPG", s: false, w: "48%", broj: "9", img: "https://www.aba-liga.com/images/players/a/13-14/vanja_marinkovic_par.jpg" },
+    { n: "Aleksej Pokuševski", p: "F/C", stat: "6.4 PPG", s: false, w: "42%", broj: "17", img: "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630197.png" },
+    { n: "Balša Koprivica", p: "C", stat: "5.1 PPG", s: false, w: "35%", broj: "23", img: "https://www.aba-liga.com/images/players/21-22/balsa_koprivica_par.jpg" }
 ];
 
 const el = ["Real Madrid", "Olympiacos", "Barcelona", "Panathinaikos", "Fenerbahce", "Monaco", "Anadolu Efes", "PARTIZAN MOZZART BET", "Maccabi", "Virtus", "Baskonia", "Milano", "Crvena zvezda", "Zalgiris", "Bayern", "Asvel", "Alba", "Paris"];
@@ -243,14 +239,14 @@ const ptr = {
     inner: document.getElementById('c-inner')
 };
 
-// Generisanje slajdera
+// Carousel slajder loader
 ptr.ind.innerHTML = slike.map((_, i) => `<button type="button" data-bs-target="#partizanCarousel" data-bs-slide-to="${i}" class="${i===0?'active':''}"></button>`).join('');
 ptr.inner.innerHTML = slike.map((s, i) => `
     <div class="carousel-item ${i===0?'active':''}">
         <img src="${s}" class="d-block w-100 c-img" alt="Partizan">
     </div>`).join('');
 
-// Generisanje prve petorke sa slikama unutar definisanih okvira
+// Prikaz startne petorke unutar okvira sa 'object-fit' osobinom
 ptr.petorka.innerHTML = igraci.filter(i => i.s).map(i => {
     return `
     <div class="col-md-4 col-6">
@@ -267,7 +263,7 @@ ptr.petorka.innerHTML = igraci.filter(i => i.s).map(i => {
     </div>`;
 }).join('');
 
-// Generisanje kompletne statistike sa mini okruglim slikama
+// Prikaz kompletne statistike sa kružnim sličicama igrača
 ptr.stat.innerHTML = igraci.map(i => {
     return `
     <div class="col-md-6"><div class="p-card rounded p-3 d-flex align-items-center gap-3">
@@ -281,7 +277,7 @@ ptr.stat.innerHTML = igraci.map(i => {
     </div></div>`;
 }).join('');
 
-// Generisanje tabela
+// Renderovanje tabela liga
 const renderTable = (domPtr, lista) => {
     domPtr.innerHTML = `<thead><tr><th>#</th><th>Klub</th></tr></thead><tbody>` + lista.map((t, r) => `
         <tr class="${t.includes('PARTIZAN') ? 'p-partizan' : ''}"><td>${r+1}</td><td>${t}</td></tr>`).join('') + `</tbody>`;
