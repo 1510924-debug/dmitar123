@@ -16,7 +16,7 @@
         .c-img { height: 450px; object-fit: cover; }
         @media (max-width: 768px) { .c-img { height: 250px; } }
         
-        /* Okviri za glavne slike igrača */
+        /* Okviri za glavne slike igrača (Tačne dimenzije) */
         .player-img-container {
             width: 100%;
             height: 250px;
@@ -73,8 +73,10 @@
             background: rgba(13, 15, 18, 0.85); /* Tamni filter preko pozadine radi čitljivosti */
             z-index: -1;
         }
-        #el { background-image: url('https://partizan.basketball/media/whatsapp-image-2024-10-14-at-92631-pm.jpeg'); }
-        #aba { background-image: url('https://partizan.basketball/media/41745886111925205185327032977938194344353591n.jpg'); }
+        
+        /* Lokalne pozadinske slike sa tvog GitHub-a */
+        #el { background-image: url('evroliga-bg.jpg'); }
+        #aba { background-image: url('aba-bg.jpg'); }
     </style>
 </head>
 <body>
@@ -205,7 +207,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Slajder sa atraktivnim pozadinama
+// Slajder slike sa proverenih online linkova (oni rade svuda)
 const slike = [
     "https://www.tvarenasport.com/storage/assets/6755/9b4ebccbd64b8bbffed88cb077d24a13_930_523.jpg",
     "https://partizan.basketball/media/whatsapp-image-2025-09-26-at-64123-pm.jpeg",
@@ -213,22 +215,19 @@ const slike = [
     "https://partizan.basketball/media/41745886111925205185327032977938194344353591n.jpg"
 ];
 
-// Igrači sa pravim zvaničnim slikama (Evroliga profil / KK Partizan baza)
+// Igrači sa lokalnim GitHub putanjama (Slike koje ubacuješ direktno u svoj repozitorijum)
 const igraci = [
-    { n: "Carlik Jones", p: "PG", stat: "14.2 PPG", s: true, w: "85%", broj: "2", img: "https:// those-images.s3.amazonaws.com/ placeholder_or_real /" },
-    { n: "Iffe Lundberg", p: "SG", stat: "11.5 PPG", s: true, w: "70%", broj: "1", img: "https://www.euroleaguebasketball.net/json/diagram/player/010323/image?seasonCode=E2024" },
-    { n: "Isaac Bonga", p: "SF", stat: "9.6 PPG", s: true, w: "62%", broj: "11", img: "https://www.euroleaguebasketball.net/json/diagram/player/008823/image?seasonCode=E2024" },
-    { n: "Brandon Davies", p: "PF", stat: "9.2 PPG", s: true, w: "60%", broj: "0", img: "https://www.euroleaguebasketball.net/json/diagram/player/005273/image?seasonCode=E2024" },
-    { n: "Tyrique Jones", p: "C", stat: "12.8 PPG", s: true, w: "78%", broj: "00", img: "https://www.euroleaguebasketball.net/json/diagram/player/012628/image?seasonCode=E2024" },
-    { n: "Frank Ntilikina", p: "G", stat: "7.8 PPG", s: false, w: "50%", broj: "21", img: "https://www.euroleaguebasketball.net/json/diagram/player/006326/image?seasonCode=E2024" },
-    { n: "Sterling Brown", p: "G/F", stat: "8.5 PPG", s: false, w: "55%", broj: "4", img: "https://www.euroleaguebasketball.net/json/diagram/player/013098/image?seasonCode=E2024" },
-    { n: "Vanja Marinković", p: "F", stat: "7.2 PPG", s: false, w: "48%", broj: "9", img: "https://www.euroleaguebasketball.net/json/diagram/player/004944/image?seasonCode=E2024" },
-    { n: "Aleksej Pokuševski", p: "F/C", stat: "6.4 PPG", s: false, w: "42%", broj: "17", img: "https://www.euroleaguebasketball.net/json/diagram/player/009138/image?seasonCode=E2024" },
-    { n: "Balša Koprivica", p: "C", stat: "5.1 PPG", s: false, w: "35%", broj: "23", img: "https://www.euroleaguebasketball.net/json/diagram/player/011005/image?seasonCode=E2024" }
+    { n: "Carlik Jones", p: "PG", stat: "14.2 PPG", s: true, w: "85%", broj: "2", img: "carlik.png" },
+    { n: "Iffe Lundberg", p: "SG", stat: "11.5 PPG", s: true, w: "70%", broj: "1", img: "iffe.png" },
+    { n: "Isaac Bonga", p: "SF", stat: "9.6 PPG", s: true, w: "62%", broj: "11", img: "bonga.png" },
+    { n: "Brandon Davies", p: "PF", stat: "9.2 PPG", s: true, w: "60%", broj: "0", img: "davies.png" },
+    { n: "Tyrique Jones", p: "C", stat: "12.8 PPG", s: true, w: "78%", broj: "00", img: "tyrique.png" },
+    { n: "Frank Ntilikina", p: "G", stat: "7.8 PPG", s: false, w: "50%", broj: "21", img: "frank.png" },
+    { n: "Sterling Brown", p: "G/F", stat: "8.5 PPG", s: false, w: "55%", broj: "4", img: "sterling.png" },
+    { n: "Vanja Marinković", p: "F", stat: "7.2 PPG", s: false, w: "48%", broj: "9", img: "vanja.png" },
+    { n: "Aleksej Pokuševski", p: "F/C", stat: "6.4 PPG", s: false, w: "42%", broj: "17", img: "aleksej.png" },
+    { n: "Balša Koprivica", p: "C", stat: "5.1 PPG", s: false, w: "35%", broj: "23", img: "balsa.png" }
 ];
-
-// Specijalna korekcija za sliku Carlika Jonesa da bi povukao tačan link iz baze evrolige
-igraci[0].img = "https://www.euroleaguebasketball.net/json/diagram/player/014164/image?seasonCode=E2024";
 
 const el = ["Real Madrid", "Olympiacos", "Barcelona", "Panathinaikos", "Fenerbahce", "Monaco", "Anadolu Efes", "PARTIZAN MOZZART BET", "Maccabi", "Virtus", "Baskonia", "Milano", "Crvena zvezda", "Zalgiris", "Bayern", "Asvel", "Alba", "Paris"];
 const aba = ["PARTIZAN MOZZART BET", "Crvena zvezda", "Budućnost", "Cedevita Olimpija", "Dubai BC", "Mega MIS", "Zadar", "Igokea", "SC Derbi", "Borac", "FMP", "Cibona", "Krka", "Mornar", "Split", "Spartak"];
@@ -251,7 +250,7 @@ ptr.inner.innerHTML = slike.map((s, i) => `
         <img src="${s}" class="d-block w-100 c-img" alt="Partizan">
     </div>`).join('');
 
-// Generisanje prve petorke sa slikama u punoj veličini
+// Generisanje prve petorke sa slikama unutar definisanih okvira
 ptr.petorka.innerHTML = igraci.filter(i => i.s).map(i => {
     return `
     <div class="col-md-4 col-6">
@@ -268,7 +267,7 @@ ptr.petorka.innerHTML = igraci.filter(i => i.s).map(i => {
     </div>`;
 }).join('');
 
-// Generisanje kompletne statistike sa okruglim sličicama
+// Generisanje kompletne statistike sa mini okruglim slikama
 ptr.stat.innerHTML = igraci.map(i => {
     return `
     <div class="col-md-6"><div class="p-card rounded p-3 d-flex align-items-center gap-3">
@@ -282,7 +281,7 @@ ptr.stat.innerHTML = igraci.map(i => {
     </div></div>`;
 }).join('');
 
-// Generisanje tabela sa istaknutim Partizanom
+// Generisanje tabela
 const renderTable = (domPtr, lista) => {
     domPtr.innerHTML = `<thead><tr><th>#</th><th>Klub</th></tr></thead><tbody>` + lista.map((t, r) => `
         <tr class="${t.includes('PARTIZAN') ? 'p-partizan' : ''}"><td>${r+1}</td><td>${t}</td></tr>`).join('') + `</tbody>`;
