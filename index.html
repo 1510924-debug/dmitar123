@@ -4,88 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KK Partizan Premium Dashboard</title>
-    <!-- Bootstrap 5 za vrhunski odziv i raspored -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        /* Paleta boja i opšta podešavanja */
-        body { background: #0b0c10; color: #c5c6c7; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .p-card { background: #1f2833; border: 1px solid #45a29e; transition: 0.3s ease-in-out; overflow: hidden; }
-        .p-card:hover { border-color: #66fcf1; box-shadow: 0 0 20px rgba(102, 252, 241, 0.2); transform: translateY(-3px); }
+        /* Crno-bela estetika sa visokim kontrastom */
+        body { background: #0d0f12; color: #a0aec0; font-family: system-ui; }
+        .p-card { background: #1a202c; border: 1px solid #2d3748; transition: 0.2s; overflow: hidden; }
+        .p-card:hover { border-color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.1); }
         
-        /* Dugmići sa jakim kontrastom */
-        .btn-p { background: #1f2833; border: 2px solid #45a29e; color: #66fcf1; font-weight: 600; padding: 10px 20px; transition: 0.2s; }
-        .btn-p:hover, .act { background: #66fcf1 !important; color: #0b0c10 !important; border-color: #66fcf1 !important; font-weight: bold; }
-        .p-partizan { background: rgba(102, 252, 241, 0.15) !important; color: #fff !important; font-weight: bold; border-left: 4px solid #66fcf1; }
+        /* Dugmići i aktivna stanja - čisto bela i crna */
+        .act, .btn-p:hover { background: #fff !important; color: #000 !important; font-weight: bold; border-color: #fff !important; }
+        .btn-p { background: #1a202c; border: 1px solid #2d3748; color: #fff; font-weight: 600; padding: 10px 20px; }
+        .p-partizan { background: rgba(255,255,255,0.15) !important; color: #fff !important; font-weight: bold; border-left: 4px solid #fff; }
         
-        /* Gornji karusel (Slajder) - Slike se prilagođavaju bez rastezanja */
-        .c-img { height: 500px; object-fit: cover; object-position: center; }
-        @media (max-width: 768px) { .c-img { height: 280px; } }
+        /* Gornji slajder */
+        .c-img { height: 480px; object-fit: cover; object-position: center; }
+        @media (max-width: 768px) { .c-img { height: 260px; } }
         
-        /* Navigacioni logo */
-        .nav-logo { height: 40px; width: auto; margin-right: 12px; }
+        /* Grb u navigaciji */
+        .nav-logo { height: 35px; width: auto; margin-right: 10px; }
 
-        /* Slike igrača u startnoj petorci - idealne proporcije */
+        /* Kontejneri za slike petorke */
         .player-img-container {
             width: 100%;
             height: 320px;
-            background: linear-gradient(180deg, #0b0c10 0%, #1f2833 100%);
-            border-bottom: 3px solid #45a29e;
+            background: #111;
+            border-bottom: 4px solid #fff;
             overflow: hidden;
         }
         .player-photo { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-        
-        /* Moćne namenske pozadine za lige sa slojem za maksimalan kontrast teksta */
+
+        /* Sekcije za Evroligu i ABA ligu sa tvojim slikama u pozadini uz zatamnjenje za kontrast */
         .league-section {
             background-size: cover;
             background-position: center;
             position: relative;
-            border-radius: 12px;
-            padding: 40px;
+            border-radius: 8px;
+            padding: 35px;
             z-index: 1;
             overflow: hidden;
-            border: 2px solid #45a29e;
+            border: 1px solid #2d3748;
         }
-        /* Filter preko pozadina da bi profesorka mogla lagano da pročita tabele (visok kontrast) */
         .league-section::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(11, 12, 16, 0.88); 
+            background: rgba(10, 10, 12, 0.88); /* Jak sloj zatamnjenja da se bela slova savršeno vide */
             z-index: -1;
         }
-        .el-bg { background-image: url('image_e1df07.png'); }
-        .aba-bg { background-image: url('image_e1de83.png'); }
+        
+        /* Povezivanje pozadina sa tvojim imenima fajlova */
+        .el-bg { background-image: url('eu.png'); }
+        .aba-bg { background-image: url('aba.png'); }
 
-        /* Stilizacija tabela */
-        .table-custom { background-color: #1f2833 !important; color: #fff; border-color: #45a29e; }
-        .table-custom th { background-color: #0b0c10 !important; color: #66fcf1 !important; border-color: #45a29e; }
-        .table-custom td { border-color: #2f3b4c; }
+        /* Stilovi tabela */
+        .table-custom { background-color: #1a202c !important; color: #fff; border-color: #2d3748; }
+        .table-custom th { background-color: #0d0f12 !important; color: #fff !important; border-color: #2d3748; }
+        .table-custom td { border-color: #2d3748; }
     </style>
 </head>
 <body>
 
-<!-- NAVIGACIJA -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary sticky-top py-2">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center fw-bold text-white fs-4" href="#">
-            <img src="image_e23cd9.png" class="nav-logo" alt="Grb"> Partizan Hub
+            <img src="3.png" class="nav-logo" alt="Grb"> Partizan Hub
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active fw-semibold fs-5 text-white" href="#" onclick="tab('home', this)">Početna</a></li>
-                <li class="nav-item"><a class="nav-link fw-semibold fs-5" href="#" onclick="tab('kontakt', this)">Članstvo & Kontakt</a></li>
+                <li class="nav-item"><a class="nav-link active fw-semibold text-white" href="#" onclick="tab('home', this)">Početna</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#" onclick="tab('kontakt', this)">Članstvo & Kontakt</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<!-- GLAVNI ROTIRAJUĆI SLAJDER (Karusel) -->
 <div class="container my-4">
-    <div id="partizanCarousel" class="carousel slide carousel-fade shadow-lg rounded-3 overflow-hidden" data-bs-ride="carousel">
+    <div id="partizanCarousel" class="carousel slide carousel-fade shadow rounded overflow-hidden" data-bs-ride="carousel">
         <div class="carousel-indicators" id="c-ind"></div>
         <div class="carousel-inner" id="c-inner"></div>
         <button class="carousel-control-prev" type="button" data-bs-target="#partizanCarousel" data-bs-slide="prev">
@@ -97,43 +95,40 @@
     </div>
 </div>
 
-<!-- GLAVNI SADRŽAJ SAJTA -->
-<div class="container py-3" style="max-width: 1100px;">
+<div class="container py-2" style="max-width: 1050px;">
     <div id="home" class="main-sec">
         <div class="text-center mb-5">
-            <h1 class="text-white fw-bold display-4">KK PARTIZAN MOZZART BET</h1>
-            <p class="text-muted fs-5">Zvanična prezentacija udarne petorke i plasmana u tekućoj sezoni</p>
+            <h1 class="text-white fw-bold display-5">KK PARTIZAN MOZZART BET</h1>
+            <div class="alert alert-dark border-secondary d-inline-block py-1 px-3 my-2" role="alert">
+                ⚫⚪ Sezona 2025/2026
+            </div>
             
-            <!-- Tab dugmad za navigaciju između sekcija -->
-            <div class="d-flex justify-content-center gap-3 my-4 flex-wrap" id="nav-bar">
+            <div class="d-flex justify-content-center gap-2 my-4 flex-wrap" id="nav-bar">
                 <button class="btn btn-p act" onclick="subTab('ekipa', this)"><i class="bi bi-people-fill"></i> Startna Petorka</button>
                 <button class="btn btn-p" onclick="subTab('el', this)"><i class="bi bi-globe"></i> Evroliga</button>
                 <button class="btn btn-p" onclick="subTab('aba', this)"><i class="bi bi-trophy-fill"></i> ABA Liga</button>
             </div>
         </div>
 
-        <!-- SEKCIJA 1: STARTNA PETORKA -->
-        <div id="ekipa" class="tab-sec animate-fade">
-            <h3 class="text-white text-center mb-4 fw-semibold"><i class="bi bi-star-fill text-warning"></i> Prva Postava Tima</h3>
-            <div class="row g-4 justify-content-center" id="petorka-box"></div>
+        <div id="ekipa" class="tab-sec">
+            <h4 class="text-white text-center mb-4 fw-semibold">⭐ Udarna Postava Parnog Valjka</h4>
+            <div class="row g-3 justify-content-center" id="petorka-box"></div>
         </div>
 
-        <!-- SEKCIJA 2: EVROLIGA (Sa slika_e1df07.png u pozadini) -->
         <div id="el" class="tab-sec league-section el-bg" style="display:none;">
             <div class="text-center mb-4">
-                <h2 class="text-white fw-bold">EuroLeague Standings 2026</h2>
-                <p class="text-info fw-semibold">Borba za Final Four u Atini</p>
+                <h3 class="text-white fw-bold">EuroLeague Standings 2026</h3>
+                <p class="text-white-50">Put do Atine</p>
             </div>
             <div class="table-responsive">
                 <table class="table table-custom table-hover table-bordered m-0" id="el-table"></table>
             </div>
         </div>
 
-        <!-- SEKCIJA 3: ABA LIGA (Sa slika_e1de83.png u pozadini) -->
         <div id="aba" class="tab-sec league-section aba-bg" style="display:none;">
             <div class="text-center mb-4">
-                <h2 class="text-white fw-bold">ABA Liga Tabela</h2>
-                <p class="text-info fw-semibold">Regionalno prvenstvo i odbrana domaćeg terena</p>
+                <h3 class="text-white fw-bold">ABA Liga Tabela</h3>
+                <p class="text-white-50">Regionalno takmičenje</p>
             </div>
             <div class="table-responsive">
                 <table class="table table-custom table-hover table-bordered m-0" id="aba-table"></table>
@@ -141,54 +136,43 @@
         </div>
     </div>
 
-    <!-- STRANICA ZA KONTAKT I ČLANSTVO -->
     <div id="kontakt" class="main-sec" style="display:none;">
-        <div class="card p-4 bg-dark text-white border-secondary shadow">
-            <h3 class="mb-4 text-center text-info fw-bold"><i class="bi bi-card-checklist"></i> Postani Član Crno-Bele Porodice</h3>
+        <div class="card p-4 bg-dark text-white border-secondary">
+            <h3 class="mb-4 text-center fw-bold">🎫 Postani Član Kluba</h3>
             <form class="row g-3" onsubmit="event.preventDefault(); alert('Zahtev uspešno poslat!');">
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold">Ime i prezime</label>
-                    <input type="text" class="form-control bg-secondary text-white border-0" placeholder="Petar Petrović" required>
+                    <label class="form-label">Ime i prezime</label>
+                    <input type="text" class="form-control" placeholder="Petar Petrović" required>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label fw-semibold">Broj telefona</label>
-                    <input type="number" class="form-control bg-secondary text-white border-0" placeholder="063123456">
+                    <label class="form-label">Broj telefona</label>
+                    <input type="number" class="form-control" placeholder="063123456">
                 </div>
-                <div class="col-12 text-center mt-4">
-                    <button type="submit" class="btn btn-p px-5">Pošalji prijavu</button>
+                <div class="col-12 text-center mt-3">
+                    <button type="submit" class="btn btn-light px-4 fw-bold">Pošalji zahtev</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- FOOTER -->
-<footer class="bg-dark text-center text-muted py-4 mt-5 border-top border-secondary">
-    <div class="container">
-        <p class="m-0 fw-semibold">&copy; 2026 KK Partizan ISD. Projekat urađen prema najvišim standardima struke.</p>
-    </div>
+<footer class="bg-dark text-center text-muted py-3 mt-5 border-top border-secondary">
+    <p class="m-0">&copy; 2026 KK Partizan ISD. Sva prava zadržana.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Slajder na vrhu - Rotacija tvoje 4 glavne slike
-const slikeKarusel = [
-    "image_e24082.png",
-    "image_e23d39.png",
-    "image_e23cd9.png",
-    "image_e23ca1.png"
-];
+/* Svi nazivi fajlova su podešeni tačno prema tvom GitHub repozitorijumu */
+const slikeKarusel = ["1.png", "2.png", "3.png", "4.png"];
 
-// Generisanje startne petorke sa tvojim namenskim slikama igrača
 const petorkaManevri = [
-    { n: "Carlik Jones", p: "PG (Plejmejker)", broj: "2", img: "image_e1ea03.png" },
-    { n: "Iffe Lundberg", p: "SG (Bek)", broj: "1", img: "image_e1e990.png" },
-    { n: "Isaac Bonga", p: "SF (Krilo)", broj: "17", img: "image_e1e665.png" },
-    { n: "Brandon Davies", p: "PF (Krilni Centar)", broj: "0", img: "image_e1e5ea.png" },
-    { n: "Tyrique Jones", p: "C (Centar)", broj: "88", img: "image_e1e2e4.png" }
+    { n: "Carlik Jones", p: "PG (Plejmejker)", broj: "2", img: "carlik.png" },
+    { n: "Iffe Lundberg", p: "SG (Bek)", broj: "1", img: "iffe.png" },
+    { n: "Isaac Bonga", p: "SF (Krilo)", broj: "17", img: "bonga.png" },
+    { n: "Brandon Davies", p: "PF (Krilni Centar)", broj: "0", img: "davis.png" },
+    { n: "Tyrique Jones", p: "C (Centar)", broj: "88", img: "tajrik.png" }
 ];
 
-// Podaci za tabele
 const elLista = ["Real Madrid", "Olympiacos", "Barcelona", "Panathinaikos", "Fenerbahce", "Monaco", "Anadolu Efes", "PARTIZAN MOZZART BET", "Maccabi", "Virtus", "Baskonia", "Milano", "Crvena zvezda", "Zalgiris"];
 const abaLista = ["PARTIZAN MOZZART BET", "Crvena zvezda", "Budućnost", "Cedevita Olimpija", "Dubai BC", "Mega MIS", "Zadar", "Igokea", "FMP"];
 
@@ -202,29 +186,29 @@ const dom = {
     inner: document.getElementById('c-inner')
 };
 
-// Ubacivanje slika u slajder
+// Generisanje slajdera
 dom.ind.innerHTML = slikeKarusel.map((_, i) => `<button type="button" data-bs-target="#partizanCarousel" data-bs-slide-to="${i}" class="${i===0?'active':''}"></button>`).join('');
 dom.inner.innerHTML = slikeKarusel.map((s, i) => `
     <div class="carousel-item ${i===0?'active':''}">
-        <img src="${s}" class="d-block w-100 c-img" alt="Partizan slajd">
+        <img src="${s}" class="d-block w-100 c-img" alt="Partizan">
     </div>`).join('');
 
-// Dinamičko generisanje petorke
+// Generisanje petorke
 dom.petorka.innerHTML = petorkaManevri.map(i => `
-    <div class="col-md-4 col-sm-6 col-12">
-        <div class="p-card rounded-3 shadow text-center h-100">
+    <div class="col-md-4 col-sm-6 col-6">
+        <div class="p-card rounded text-center h-100">
             <div class="player-img-container">
                 <img src="${i.img}" class="player-photo" alt="${i.n}">
             </div>
             <div class="p-3">
-                <span class="badge bg-dark text-info fw-bold border border-info mb-2">${i.p}</span>
-                <h4 class="text-white my-1 fw-bold">${i.n}</h4>
-                <p class="text-muted m-0 fs-6">Broj dresa: <strong>#${i.broj}</strong></p>
+                <span class="badge bg-dark text-white fw-bold border border-secondary mb-2">${i.p}</span>
+                <h5 class="text-white my-1 fw-bold">${i.n}</h5>
+                <small class="text-muted">Broj: #${i.broj}</small>
             </div>
         </div>
     </div>`).join('');
 
-// Funkcija za generisanje lepo stilizovanih tabela sa istaknutim Partizanom
+// Generisanje tabela
 const napraviTabelu = (tabelaDom, lista) => {
     tabelaDom.innerHTML = `<thead><tr><th style="width: 80px;">Pozicija</th><th>Klub</th></tr></thead><tbody>` + lista.map((t, r) => `
         <tr class="${t.includes('PARTIZAN') ? 'p-partizan' : ''}"><td><strong>${r+1}.</strong></td><td>${t}</td></tr>`).join('') + `</tbody>`;
@@ -232,7 +216,7 @@ const napraviTabelu = (tabelaDom, lista) => {
 napraviTabelu(dom.el, elLista);
 napraviTabelu(dom.aba, abaLista);
 
-// Kontrole za pod-stranice (Petorka, EL, ABA)
+// Navigacija
 function subTab(id, btn) {
     dom.subSecs.forEach(s => s.style.display = 'none');
     document.querySelectorAll('#nav-bar .btn-p').forEach(b => b.classList.remove('act'));
@@ -240,7 +224,6 @@ function subTab(id, btn) {
     btn.classList.add('act');
 }
 
-// Kontrole za glavnu navigaciju (Početna, Kontakt)
 function tab(id, btn) {
     dom.mainSecs.forEach(s => s.style.display = 'none');
     document.querySelectorAll('.navbar-nav .nav-link').forEach(l => l.classList.remove('active'));
